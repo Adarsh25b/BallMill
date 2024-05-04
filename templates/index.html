@@ -1,0 +1,100 @@
+<hmtl>
+	<head>
+		<style>
+			body{
+				background-color:antiquewhite;
+				text-align: center;
+				font-family: Arial,sans-serif;
+				color:#fffff;
+			}
+			.login{
+				width:400px;
+				margin:0 auto;
+				padding: 20px;
+				background-color: rgba(57,147,135,0.7);
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0,0,0,0.3);
+			}
+			.form-label{
+				font-size: 16px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+		    .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .btn {
+            background-color: #864951;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+		</style>
+
+	</head>
+	<body>
+		<div class="login">
+			<form action="{{url_for('predict')}}" method="post">
+				<h1>
+					<legend> Welcome to Ball Mill circuit cotroller</legend>
+				</h1>
+               <div class="mb-3">
+               	<label class="form-label">Percentage of feed greater than 1000 𝜇m</label>
+               	<input class="form-control" type="number" name="F" required="" min="0" max="100" step="1"/>
+               </div>
+                <div class="mb-3">
+               	<label class="form-label">power to the  mill (in kW),</label>
+               	<input class="form-control" type="number" name="P" required="" min="0" max="10" step="0.5"/>
+               </div>
+                <div class="mb-3">
+               	<label class="form-label">cut size of the classifier(in 𝜇m)</label>
+               	<input class="form-control" type="number" name="D" required="" min="0" max="500" step="1"/>
+               </div>
+               <div class="mb-3">
+               	<label class="form-label">desired fines in (%)</label>
+               	<input class="form-control" type="number" name="desired" required="" min="0" max="100" step="0.5"/>
+               </div>
+               <div class="mb-3">
+               	<br>
+               	<input class="btn btn-primary" type="submit" value="result" required/>
+               </div>
+        
+
+			</form>
+			<h2>
+				Change the following parameters on the decreasing order of priority 
+			</h2>
+			<h2>
+				1) Change the density of ball in ball mill by {{result1}} times the initial value
+			</h2>
+			<h2>
+				2) Change the critical revolution of ball mill by {{result1}} times the initial value
+			</h2> 
+			<h2>
+				 3) Change the volumetric flowrate of the feed by {{result2}} times the initial value 
+			</h2>
+			
+			<h2>
+				4) Change(Increase) the % solid in the feed by {{result3}}%
+			</h2>
+		</div>
+	</body>
+</hmtl>
