@@ -2,8 +2,6 @@ from flask import Flask, render_template,request
 import joblib
 import math
 
-model1=joblib.load('./models/reg.pkl')
-model2=joblib.load('./models/clus.pkl')
 
 app=Flask(__name__)
 
